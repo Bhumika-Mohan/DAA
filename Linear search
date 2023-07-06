@@ -1,25 +1,28 @@
+// Linear Search in C
+
 #include <stdio.h>
 
-int linearSearch(int array[], int n, int target) {
-    for (int i = 0; i < n; i++) {
-        if (array[i] == target) {
-            return i; 
-        }
-    }
-    return -1; 
+int search(int array[], int n, int x) {
+  
+  // Going through array sequencially
+  for (int i = 0; i < n; i++)
+    if (array[i] == x)
+      return i;
+  return -1;
 }
 
 int main() {
-    int array[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
-    int size = sizeof(array) / sizeof(array[0]);
-    int target = 12;
-    
-    int index = linearSearch(array, size, target);
-    if (index != -1) {
-        printf("Element %d found at index %d\n", target, index);
-    } else {
-        printf("Element %d not found in the array\n", target);
-    }
-    
-    return 0;
+  int array[] = {2, 4, 0, 1, 9};
+  int x = 1;
+  int n = sizeof(array) / sizeof(array[0]);
+
+  int result = search(array, n, x);
+
+  (result == -1) ? printf("Element not found") : printf("Element found at index: %d", result);
 }
+
+ALGORITHM
+LinearSearch(array, key)
+  for each item in the array
+    if item == value
+      return its index
