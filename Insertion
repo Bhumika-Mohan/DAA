@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+void insertElement(int arr[], int size, int index, int element) {
+    if (index < 0 || index > size) {
+        printf("Invalid index!");
+        return;
+    }
+
+    if (size >= MAX_SIZE) {
+        printf("Array is full!");
+        return;
+    }
+
+    // Shift elements to the right to make space for the new element
+    for (int i = size - 1; i >= index; i--) {
+        arr[i + 1] = arr[i];
+    }
+
+    // Insert the new element at the specified index
+    arr[index] = element;
+
+    // Increase the size of the array
+    size++;
+
+    printf("Element inserted successfully!\n");
+
+    // Print the updated array
+    printf("Updated array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[MAX_SIZE] = {1, 2, 3, 4, 5};
+    int size = 5;
+    int index, element;
+
+    printf("Enter the index where you want to insert the element: ");
+    scanf("%d", &index);
+
+    printf("Enter the element to be inserted: ");
+    scanf("%d", &element);
+
+    insertElement(arr, size, index, element);
+
+    return 0;
+}
