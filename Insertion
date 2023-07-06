@@ -1,45 +1,36 @@
+// Insertion sort in C
+
 #include <stdio.h>
 
-#define MAX_SIZE 100
-
-void insertElement(int arr[], int size, int index, int element) {
-    if (index < 0 || index > size) {
-        printf("Invalid index!");
-        return;
-    }
-
-    if (size >= MAX_SIZE) {
-        printf("Array is full!");
-        return;
-    }
-    for (int i = size - 1; i >= index; i--) {
-        arr[i + 1] = arr[i];
-    }
-    arr[index] = element;
-
-    size++;
-
-    printf("Element inserted successfully!\n");
-
-    printf("Updated array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+// Function to print an array
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; i++) {
+    printf("%d ", array[i]);
+  }
+  printf("\n");
 }
 
+void insertionSort(int array[], int size) {
+  for (int step = 1; step < size; step++) {
+    int key = array[step];
+    int j = step - 1;
+
+    // Compare key with each element on the left of it until an element smaller than
+    // it is found.
+    // For descending order, change key<array[j] to key>array[j].
+    while (key < array[j] && j >= 0) {
+      array[j + 1] = array[j];
+      --j;
+    }
+    array[j + 1] = key;
+  }
+}
+
+// Driver code
 int main() {
-    int arr[MAX_SIZE] = {1, 2, 3, 4, 5};
-    int size = 5;
-    int index, element;
-
-    printf("Enter the index where you want to insert the element: ");
-    scanf("%d", &index);
-
-    printf("Enter the element to be inserted: ");
-    scanf("%d", &element);
-
-    insertElement(arr, size, index, element);
-
-    return 0;
+  int data[] = {9, 5, 1, 4, 3};
+  int size = sizeof(data) / sizeof(data[0]);
+  insertionSort(data, size);
+  printf("Sorted array in ascending order:\n");
+  printArray(data, size);
 }
