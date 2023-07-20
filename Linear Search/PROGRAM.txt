@@ -20,9 +20,3 @@ int main() {
 
   (result == -1) ? printf("Element not found") : printf("Element found at index: %d", result);
 }
-
-ALGORITHM
-LinearSearch(array, key)
-  for each item in the array
-    if item == value
-      return its index
