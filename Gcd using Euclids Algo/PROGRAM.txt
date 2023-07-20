@@ -22,7 +22,3 @@ int main()
 	printf("GCD(%d, %d) = %d\n", a, b, gcd(a, b));
 	return 0;
 }
-
-ALGORITHM
-If we subtract a smaller number from a larger one (we reduce a larger number), GCD doesn’t change. So if we keep subtracting repeatedly the larger of two, we end up with GCD.
-Now instead of subtraction, if we divide the smaller number, the algorithm stops when we find the remainder 0.
